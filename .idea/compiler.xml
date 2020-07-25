@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
-      <module name="JspServlety" target="11" />
+      <module name="JspServlety" target="1.11" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -3,13 +3,83 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
     <servlet>
         <servlet-name>HelloServlet</servlet-name>
         <servlet-class>com.sda.HelloServlet</servlet-class>
+<!--        <init-param>-->
+<!--            <param-name>who</param-name>-->
+<!--            <param-value>World</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>times</param-name>-->
+<!--            <param-value>5</param-value>-->
+<!--        </init-param>--> <!-- przykładowe adnotacje-->
+        <load-on-startup>3</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
-        <url-pattern>hello</url-pattern>
+        <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AboutMeServlet</servlet-name>
+        <servlet-class>com.sda.programminglanguage.AboutMeServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AboutMeServlet</servlet-name>
+        <url-pattern>/aboutMeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProgrammingLanguageDashboardServlet</servlet-name>
+        <servlet-class>com.sda.programminglanguage.ProgrammingLanguageDashboardServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProgrammingLanguageDashboardServlet</servlet-name>
+        <url-pattern>/languages</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddProgrammingLanguageServlet</servlet-name>
+        <servlet-class>com.sda.programminglanguage.AddProgrammingLanguageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddProgrammingLanguageServlet</servlet-name>
+        <url-pattern>/addLanguage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NoteServlet</servlet-name>
+        <servlet-class>com.sda.note.NoteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NoteServlet</servlet-name>
+        <url-pattern>/note</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ErrorHandlerServlet</servlet-name>
+        <servlet-class>com.sda.ErrorHandlerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorHandlerServlet</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error</location>
+    </error-page>
+
+    <filter>
+        <filter-name>CheckRequestRemoteAddrFilter</filter-name>
+        <filter-class>com.sda.note.CheckRequestRemoteAddrFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CheckRequestRemoteAddrFilter</filter-name>
+        <servlet-name>NoteServlet</servlet-name>
+    </filter-mapping>
 
 </web-app>
